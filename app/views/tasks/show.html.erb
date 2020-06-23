@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="title">
+        <h1><%= @task.title.upcase %></h1>
+    </div>
+    <div class="details alert alert-primary"><%= @task.details %></div>
+    <% if @task.completed %>
+        <div class="completed d-flex align-items-center">
+            <input type="checkbox" checked>
+            <p class="m-3 text-success">This task is completed</p>
+        </div>
+    <% else %>
+        <div class="completed d-flex align-items-center">
+            <input type="checkbox">
+            <p class="m-3">This task is not completed</p>
+        </div>
+    <% end %>
+    <div id="edit-link">
+        <%= link_to "Edit Task", edit_task_path(@task) %>
+    </div>
+    <div class="delete-link">
+        <%= link_to "Delete",
+        task_path(@task), method: :delete, data: { confirm: "Are you sure?"} %>
+    </div>
+</div>
